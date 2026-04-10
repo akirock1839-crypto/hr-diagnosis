@@ -3,98 +3,191 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>人事課題 無料診断 | NakamAction_LABO</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<title>人事制度 無料診断 | NakamAction_LABO</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --gold: #c8a84b;
-    --gold-light: #e8cc7a;
-    --gold-dim: rgba(200,168,75,0.15);
-    --dark: #0e0e0e;
-    --dark2: #161616;
-    --dark3: #1e1e1e;
-    --border: rgba(200,168,75,0.25);
-    --text: #f0ede6;
-    --text-dim: rgba(240,237,230,0.55);
-    --radius: 12px;
+    --navy: #1a2e4a;
+    --navy-mid: #243d5e;
+    --blue: #2563a8;
+    --blue-light: #3b7dd8;
+    --blue-pale: #ebf2fb;
+    --blue-pale2: #f4f8fd;
+    --white: #ffffff;
+    --gray-50: #f8f9fb;
+    --gray-100: #eef0f4;
+    --gray-300: #c8cdd8;
+    --gray-500: #7a8499;
+    --text: #1a2133;
+    --text-mid: #3d4a5e;
+    --text-light: #6b7a94;
+    --border: #dde3ed;
+    --radius: 10px;
+    --shadow-sm: 0 1px 4px rgba(26,46,74,0.07);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: var(--dark);
+    background: var(--gray-50);
     color: var(--text);
     font-family: 'Noto Sans JP', sans-serif;
     font-weight: 300;
     min-height: 100vh;
-    overflow-x: hidden;
+    line-height: 1.7;
   }
 
-  /* Background grid */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(200,168,75,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(200,168,75,0.04) 1px, transparent 1px);
-    background-size: 48px 48px;
-    pointer-events: none;
-    z-index: 0;
+  .topbar {
+    background: var(--navy);
+    padding: 0 32px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .container {
-    position: relative;
-    z-index: 1;
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 0 24px 80px;
+  .topbar-brand {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: 0.08em;
   }
 
-  /* Header */
-  .header {
-    padding: 52px 0 40px;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 48px;
-  }
-
-  .brand {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 13px;
+  .topbar-brand span {
+    color: #7ab3e0;
+    font-size: 12px;
+    margin-left: 12px;
     font-weight: 400;
-    letter-spacing: 0.25em;
-    color: var(--gold);
-    text-transform: uppercase;
+  }
+
+  .topbar-free {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.08em;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 3px 12px;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1e4a7a 100%);
+    padding: 52px 24px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 20% 50%, rgba(59,125,216,0.15) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, rgba(30,127,191,0.12) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 36px;
+    background: var(--gray-50);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 5px 16px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 0.12em;
     margin-bottom: 20px;
   }
 
-  .header h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(28px, 5vw, 40px);
-    font-weight: 500;
-    line-height: 1.25;
-    color: var(--text);
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: #5bc8a0;
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.35;
     margin-bottom: 14px;
+    letter-spacing: 0.03em;
   }
 
-  .header h1 span {
-    color: var(--gold);
+  .hero h1 em {
+    font-style: normal;
+    color: #7ab3e0;
   }
 
-  .header-sub {
+  .hero-sub {
     font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.8;
+    color: rgba(255,255,255,0.6);
     letter-spacing: 0.04em;
+    margin-bottom: 28px;
   }
 
-  /* Progress bar */
-  .progress-wrap {
-    margin-bottom: 36px;
+  .hero-stats {
+    display: inline-flex;
+    gap: 24px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 40px;
+    padding: 10px 28px;
   }
 
-  .progress-meta {
+  .hero-stat { text-align: center; }
+
+  .hero-stat-num {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    display: block;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .hero-stat-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.06em;
+  }
+
+  .hero-stat-div {
+    width: 1px;
+    background: rgba(255,255,255,0.15);
+    align-self: stretch;
+  }
+
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+
+  .progress-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 18px 22px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .progress-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -103,767 +196,732 @@
 
   .progress-label {
     font-size: 11px;
+    font-weight: 500;
     letter-spacing: 0.1em;
-    color: var(--text-dim);
+    color: var(--text-light);
+    text-transform: uppercase;
   }
 
-  .progress-count {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--gold);
+  .progress-frac {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--blue);
   }
 
   .progress-track {
-    height: 2px;
-    background: rgba(200,168,75,0.15);
-    border-radius: 1px;
+    height: 4px;
+    background: var(--gray-100);
+    border-radius: 2px;
     overflow: hidden;
   }
 
   .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    border-radius: 1px;
-    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(90deg, var(--blue), var(--blue-light));
+    border-radius: 2px;
+    transition: width 0.45s cubic-bezier(0.4,0,0.2,1);
     width: 0%;
   }
 
-  /* Question block */
-  .question-block {
-    display: none;
-    animation: fadeSlide 0.4s ease forwards;
+  .q-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 28px 26px;
+    box-shadow: var(--shadow-sm);
   }
 
-  .question-block.active {
-    display: block;
-  }
+  .question-block { display: none; }
+  .question-block.active { display: block; animation: fadeUp 0.35s ease forwards; }
 
-  @keyframes fadeSlide {
-    from { opacity: 0; transform: translateY(16px); }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .q-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 0.2em;
-    color: var(--gold);
+  .q-tag {
+    display: inline-block;
+    background: var(--blue-pale);
+    color: var(--blue);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 14px;
     text-transform: uppercase;
-    margin-bottom: 12px;
   }
 
   .q-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(20px, 3.5vw, 26px);
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(17px, 3vw, 21px);
     font-weight: 500;
-    line-height: 1.5;
     color: var(--text);
-    margin-bottom: 28px;
-    letter-spacing: 0.02em;
+    line-height: 1.55;
+    margin-bottom: 8px;
   }
 
-  .q-sub {
+  .q-hint {
     font-size: 12px;
-    color: var(--text-dim);
-    margin-top: -20px;
-    margin-bottom: 24px;
-    letter-spacing: 0.04em;
+    color: var(--text-light);
+    margin-bottom: 22px;
     line-height: 1.6;
   }
 
-  /* Options */
-  .options {
-    display: grid;
-    gap: 10px;
-  }
+  .options { display: grid; gap: 8px; }
 
   .option {
-    position: relative;
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 18px 20px;
-    background: var(--dark2);
-    border: 1px solid rgba(200,168,75,0.18);
-    border-radius: var(--radius);
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--gray-50);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.22s ease;
+    transition: all 0.18s ease;
     user-select: none;
   }
 
   .option:hover {
-    border-color: rgba(200,168,75,0.5);
-    background: var(--dark3);
-    transform: translateX(4px);
+    border-color: var(--blue-light);
+    background: var(--blue-pale2);
+    transform: translateX(3px);
   }
 
   .option.selected {
-    border-color: var(--gold);
-    background: var(--gold-dim);
+    border-color: var(--blue);
+    background: var(--blue-pale);
   }
 
-  .option-marker {
-    width: 20px;
-    height: 20px;
+  .opt-check {
+    width: 20px; height: 20px;
     border-radius: 50%;
-    border: 1.5px solid rgba(200,168,75,0.4);
+    border: 1.5px solid var(--gray-300);
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s;
+    transition: all 0.18s;
+    background: var(--white);
   }
 
-  .option.selected .option-marker {
-    border-color: var(--gold);
-    background: var(--gold);
+  .option.selected .opt-check {
+    border-color: var(--blue);
+    background: var(--blue);
   }
 
-  .option.selected .option-marker::after {
+  .option.selected .opt-check::after {
     content: '';
-    width: 6px;
-    height: 6px;
-    background: var(--dark);
+    width: 6px; height: 6px;
+    background: var(--white);
     border-radius: 50%;
   }
 
-  .option-text {
+  .opt-text {
     font-size: 14px;
-    line-height: 1.6;
-    letter-spacing: 0.03em;
-    color: var(--text);
+    color: var(--text-mid);
+    line-height: 1.5;
   }
 
-  .option.selected .option-text {
-    color: var(--gold-light);
+  .option.selected .opt-text {
+    color: var(--navy);
+    font-weight: 400;
   }
 
-  /* Scale options */
   .options.scale {
     grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
   }
 
   .options.scale .option {
     flex-direction: column;
     text-align: center;
-    padding: 16px 8px;
-    gap: 8px;
+    padding: 14px 6px;
+    gap: 6px;
     justify-content: center;
   }
 
-  .scale-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 500;
-    color: var(--text-dim);
-    transition: color 0.2s;
+  .scale-letter {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gray-500);
+    line-height: 1;
+    transition: color 0.18s;
   }
 
-  .option.selected .scale-num {
-    color: var(--gold);
-  }
+  .option.selected .scale-letter { color: var(--blue); }
 
-  .scale-label {
+  .scale-lbl {
     font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.05em;
+    color: var(--text-light);
     line-height: 1.3;
   }
 
-  /* Nav buttons */
-  .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 36px;
-    gap: 12px;
-  }
-
-  .btn-back {
-    background: none;
-    border: 1px solid rgba(200,168,75,0.25);
-    color: var(--text-dim);
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.2s;
-    letter-spacing: 0.06em;
-  }
-
-  .btn-back:hover {
-    border-color: rgba(200,168,75,0.5);
-    color: var(--text);
-  }
-
-  .btn-next {
-    background: var(--gold);
-    border: none;
-    color: var(--dark);
-    padding: 14px 36px;
-    border-radius: 8px;
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 500;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.22s ease;
-    letter-spacing: 0.08em;
-    margin-left: auto;
-    opacity: 0.4;
-    pointer-events: none;
-  }
-
-  .btn-next.ready {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  .btn-next.ready:hover {
-    background: var(--gold-light);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 20px rgba(200,168,75,0.3);
-  }
-
-  /* Company info step */
-  .info-group {
-    display: grid;
-    gap: 16px;
-    margin-bottom: 8px;
-  }
-
-  .field-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+  .info-grid { display: grid; gap: 16px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
 
   .field-label {
     font-size: 11px;
-    letter-spacing: 0.12em;
-    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--text-light);
     text-transform: uppercase;
   }
 
   .field-input {
-    background: var(--dark2);
-    border: 1px solid rgba(200,168,75,0.18);
+    background: var(--white);
+    border: 1.5px solid var(--border);
     border-radius: 8px;
-    padding: 14px 16px;
-    color: var(--text);
+    padding: 12px 14px;
     font-family: 'Noto Sans JP', sans-serif;
     font-size: 14px;
     font-weight: 300;
+    color: var(--text);
     outline: none;
-    transition: border-color 0.2s;
+    transition: border-color 0.18s;
     width: 100%;
   }
 
-  .field-input:focus {
-    border-color: rgba(200,168,75,0.6);
-  }
-
-  .field-input::placeholder {
-    color: rgba(240,237,230,0.25);
-  }
+  .field-input:focus { border-color: var(--blue); }
+  .field-input::placeholder { color: var(--gray-300); }
 
   select.field-input {
     cursor: pointer;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c8a84b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232563a8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 16px center;
-    padding-right: 40px;
+    background-position: right 14px center;
+    padding-right: 36px;
   }
 
-  select.field-input option {
-    background: var(--dark2);
-  }
+  select.field-input option { background: var(--white); }
 
-  /* Result page */
-  #result-section {
-    display: none;
-    animation: fadeSlide 0.5s ease forwards;
-  }
-
-  .result-header {
-    text-align: center;
-    padding: 32px 0 36px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 40px;
-  }
-
-  .result-badge {
-    display: inline-block;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    color: var(--gold);
-    text-transform: uppercase;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 5px 16px;
-    margin-bottom: 20px;
-  }
-
-  .result-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(24px, 4vw, 34px);
-    font-weight: 500;
-    line-height: 1.3;
-    margin-bottom: 12px;
-  }
-
-  .result-company {
-    color: var(--gold);
-  }
-
-  .score-visual {
-    margin: 36px 0;
-    display: grid;
-    gap: 16px;
-  }
-
-  .score-item {
+  .nav {
     display: flex;
     align-items: center;
-    gap: 16px;
+    justify-content: space-between;
+    margin-top: 24px;
+    gap: 10px;
   }
 
-  .score-label {
-    font-size: 12px;
+  .btn-back {
+    background: none;
+    border: 1.5px solid var(--border);
+    color: var(--text-light);
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+
+  .btn-back:hover { border-color: var(--blue-light); color: var(--blue); }
+
+  .btn-next {
+    background: var(--blue);
+    border: none;
+    color: var(--white);
+    padding: 13px 32px;
+    border-radius: 8px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
     letter-spacing: 0.06em;
-    color: var(--text-dim);
-    min-width: 120px;
+    margin-left: auto;
+    opacity: 0.35;
+    pointer-events: none;
+    box-shadow: 0 2px 8px rgba(37,99,168,0.2);
+  }
+
+  .btn-next.ready { opacity: 1; pointer-events: all; }
+  .btn-next.ready:hover { background: var(--blue-light); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(37,99,168,0.3); }
+
+  #result-section { display: none; animation: fadeUp 0.45s ease forwards; }
+
+  .result-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .result-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 60%, rgba(59,125,216,0.2) 0%, transparent 55%);
+  }
+
+  .result-company-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .result-company-name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(20px, 4vw, 28px);
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .result-subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .section-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 24px 22px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .section-heading {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--gray-100);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-heading::before {
+    content: '';
+    width: 3px; height: 16px;
+    background: var(--blue);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .score-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .score-row:last-child { margin-bottom: 0; }
+
+  .score-dim {
+    font-size: 12px;
+    color: var(--text-mid);
+    min-width: 130px;
     flex-shrink: 0;
   }
 
   .score-track {
     flex: 1;
-    height: 4px;
-    background: rgba(200,168,75,0.12);
-    border-radius: 2px;
+    height: 6px;
+    background: var(--gray-100);
+    border-radius: 3px;
     overflow: hidden;
   }
 
   .score-bar {
     height: 100%;
-    border-radius: 2px;
+    border-radius: 3px;
     width: 0%;
-    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: width 0.9s cubic-bezier(0.4,0,0.2,1);
   }
 
-  .score-bar.low  { background: linear-gradient(90deg, #c8a84b, #e8cc7a); }
-  .score-bar.mid  { background: linear-gradient(90deg, #c8a84b, #e8cc7a); }
-  .score-bar.high { background: linear-gradient(90deg, #d97b6a, #e8a084); }
+  .score-bar.good { background: linear-gradient(90deg, #2563a8, #3b9de0); }
+  .score-bar.warn { background: linear-gradient(90deg, #e07b2a, #f0a550); }
+  .score-bar.risk { background: linear-gradient(90deg, #c0392b, #e05a4a); }
 
-  .score-val {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--gold);
-    min-width: 40px;
+  .score-pct {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 16px;
+    font-weight: 600;
+    min-width: 38px;
     text-align: right;
   }
 
-  /* Issues section */
-  .issues-section {
-    margin: 36px 0;
+  .score-pct.good { color: var(--blue); }
+  .score-pct.warn { color: #e07b2a; }
+  .score-pct.risk { color: #c0392b; }
+
+  .issue-item {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--gray-100);
   }
 
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--gold);
-    margin-bottom: 16px;
-    letter-spacing: 0.04em;
-  }
+  .issue-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .issue-item:first-child { padding-top: 0; }
 
-  .issue-card {
-    background: var(--dark2);
-    border: 1px solid rgba(200,168,75,0.2);
-    border-left: 3px solid var(--gold);
-    border-radius: 0 var(--radius) var(--radius) 0;
-    padding: 18px 20px;
-    margin-bottom: 12px;
+  .issue-icon {
+    width: 36px; height: 36px;
+    background: var(--blue-pale);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
   }
 
   .issue-title {
     font-size: 14px;
     font-weight: 500;
-    color: var(--text);
-    margin-bottom: 6px;
-    letter-spacing: 0.04em;
+    color: var(--navy);
+    margin-bottom: 5px;
   }
 
   .issue-desc {
     font-size: 12px;
-    color: var(--text-dim);
+    color: var(--text-light);
     line-height: 1.75;
-    letter-spacing: 0.03em;
   }
 
-  /* CTA */
-  .cta-block {
-    background: var(--dark2);
-    border: 1px solid var(--border);
+  .cta-card {
+    background: var(--navy);
     border-radius: var(--radius);
     padding: 32px 28px;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 20px;
     position: relative;
     overflow: hidden;
   }
 
-  .cta-block::before {
+  .cta-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    inset: 0;
+    background: radial-gradient(circle at 70% 30%, rgba(59,125,216,0.2) 0%, transparent 50%);
   }
 
-  .cta-label {
+  .cta-eyebrow {
     font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--gold);
+    letter-spacing: 0.15em;
+    color: #7ab3e0;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .cta-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    font-weight: 500;
-    margin-bottom: 10px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(18px, 3.5vw, 24px);
+    font-weight: 600;
+    color: var(--white);
     line-height: 1.4;
+    margin-bottom: 12px;
   }
 
   .cta-desc {
     font-size: 13px;
-    color: var(--text-dim);
+    color: rgba(255,255,255,0.6);
     line-height: 1.8;
     margin-bottom: 24px;
-    letter-spacing: 0.03em;
   }
 
   .cta-btn {
     display: inline-block;
-    background: var(--gold);
-    color: var(--dark);
+    background: var(--white);
+    color: var(--navy);
     font-family: 'Noto Sans JP', sans-serif;
     font-weight: 500;
     font-size: 14px;
-    letter-spacing: 0.1em;
-    padding: 16px 44px;
+    letter-spacing: 0.06em;
+    padding: 15px 44px;
     border-radius: 8px;
-    text-decoration: none;
-    transition: all 0.22s ease;
-    cursor: pointer;
     border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
   }
 
-  .cta-btn:hover {
-    background: var(--gold-light);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 28px rgba(200,168,75,0.35);
-  }
+  .cta-btn:hover { background: var(--blue-pale); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.25); }
 
   .cta-note {
     font-size: 11px;
-    color: var(--text-dim);
-    margin-top: 14px;
-    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.35);
+    margin-top: 12px;
   }
 
-  /* Footer */
+  .trust-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 16px;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .trust-item::before { content: '✓'; color: #5bc8a0; font-size: 12px; }
+
   .footer {
     text-align: center;
-    padding: 40px 0 0;
+    padding: 32px 0 0;
     font-size: 11px;
-    color: rgba(240,237,230,0.25);
-    letter-spacing: 0.1em;
-    border-top: 1px solid rgba(200,168,75,0.1);
-    margin-top: 60px;
+    color: var(--gray-500);
+    letter-spacing: 0.06em;
+    border-top: 1px solid var(--gray-100);
+    margin-top: 48px;
   }
 
-  .footer span { color: var(--gold); opacity: 0.6; }
-
   @media (max-width: 480px) {
-    .options.scale { grid-template-columns: repeat(5, 1fr); }
+    .two-col { grid-template-columns: 1fr; }
+    .hero-stats { gap: 16px; padding: 10px 18px; }
     .options.scale .option { padding: 12px 4px; }
-    .scale-num { font-size: 18px; }
-    .scale-label { font-size: 9px; }
+    .scale-letter { font-size: 17px; }
+    .score-dim { min-width: 100px; font-size: 11px; }
   }
 </style>
 </head>
 <body>
+
+<div class="topbar">
+  <div class="topbar-brand">NakamAction_LABO<span>人事コンサルティング</span></div>
+  <div class="topbar-free">無料診断</div>
+</div>
+
+<div class="hero">
+  <div class="hero-badge">HR Diagnosis Tool</div>
+  <h1>人事制度<em>無料</em>診断</h1>
+  <p class="hero-sub">約3分 · 10問 · 診断結果をその場で表示</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="hero-stat-num">10</span><span class="hero-stat-label">設問数</span></div>
+    <div class="hero-stat-div"></div>
+    <div class="hero-stat"><span class="hero-stat-num">5</span><span class="hero-stat-label">診断軸</span></div>
+    <div class="hero-stat-div"></div>
+    <div class="hero-stat"><span class="hero-stat-num">無料</span><span class="hero-stat-label">費用</span></div>
+  </div>
+</div>
+
 <div class="container">
 
-  <header class="header">
-    <div class="brand">NakamAction_LABO</div>
-    <h1>人事制度<span>無料</span>診断</h1>
-    <p class="header-sub">
-      約3分 · 10の質問 · その場で結果を表示<br>
-      貴社の人事課題を可視化し、改善の糸口をお伝えします
-    </p>
-  </header>
+  <div class="progress-card">
+    <div class="progress-top">
+      <span class="progress-label">Progress</span>
+      <span class="progress-frac" id="progress-text">0 / 10</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+  </div>
 
-  <!-- Form section -->
   <div id="form-section">
+    <div class="q-card">
 
-    <div class="progress-wrap">
-      <div class="progress-meta">
-        <span class="progress-label">PROGRESS</span>
-        <span class="progress-count" id="progress-text">0 / 10</span>
-      </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="progress-fill"></div>
-      </div>
-    </div>
-
-    <!-- Q0: Company info -->
-    <div class="question-block active" id="q0">
-      <div class="q-number">基本情報</div>
-      <div class="q-text">貴社についてお聞かせください</div>
-      <div class="info-group">
-        <div class="field-wrap">
-          <label class="field-label">会社名</label>
-          <input class="field-input" id="company-name" type="text" placeholder="株式会社〇〇" oninput="checkInfo()">
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-          <div class="field-wrap">
-            <label class="field-label">従業員数</label>
-            <select class="field-input" id="company-size" onchange="checkInfo()">
-              <option value="">選択してください</option>
-              <option value="〜30名">〜30名</option>
-              <option value="31〜50名">31〜50名</option>
-              <option value="51〜100名">51〜100名</option>
-              <option value="101〜200名">101〜200名</option>
-              <option value="201〜300名">201〜300名</option>
-              <option value="300名以上">300名以上</option>
-            </select>
+      <div class="question-block active" id="q0">
+        <div class="q-tag">基本情報</div>
+        <div class="q-text">貴社についてお聞かせください</div>
+        <div class="info-grid">
+          <div class="field">
+            <label class="field-label">会社名</label>
+            <input class="field-input" id="company-name" type="text" placeholder="株式会社〇〇" oninput="checkInfo()">
           </div>
-          <div class="field-wrap">
-            <label class="field-label">業種</label>
-            <select class="field-input" id="company-industry" onchange="checkInfo()">
-              <option value="">選択してください</option>
-              <option value="製造業">製造業</option>
-              <option value="情報・IT">情報・IT</option>
-              <option value="小売・サービス">小売・サービス</option>
-              <option value="建設・不動産">建設・不動産</option>
-              <option value="医療・福祉">医療・福祉</option>
-              <option value="物流・運輸">物流・運輸</option>
-              <option value="その他">その他</option>
-            </select>
+          <div class="two-col">
+            <div class="field">
+              <label class="field-label">従業員数</label>
+              <select class="field-input" id="company-size" onchange="checkInfo()">
+                <option value="">選択してください</option>
+                <option>〜30名</option><option>31〜50名</option><option>51〜100名</option>
+                <option>101〜200名</option><option>201〜300名</option><option>300名以上</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field-label">業種</label>
+              <select class="field-input" id="company-industry" onchange="checkInfo()">
+                <option value="">選択してください</option>
+                <option>製造業</option><option>情報・IT</option><option>小売・サービス</option>
+                <option>建設・不動産</option><option>医療・福祉</option><option>物流・運輸</option><option>その他</option>
+              </select>
+            </div>
           </div>
         </div>
+        <div class="nav"><button class="btn-next" id="btn-next-0" onclick="goNext()">診断をはじめる →</button></div>
       </div>
-      <div class="nav">
-        <button class="btn-next" id="btn-next-0" onclick="goNext()">診断をはじめる →</button>
+
+      <div class="question-block" id="q1">
+        <div class="q-tag">Question 01 / 10</div>
+        <div class="q-text">等級・職位の定義が明文化されていますか？</div>
+        <div class="q-hint">「なんとなく役職がある」状態は含みません</div>
+        <div class="options" data-q="1">
+          <div class="option" onclick="selectOption(this,1,0)"><div class="opt-check"></div><div class="opt-text">明文化され、全社員に周知されている</div></div>
+          <div class="option" onclick="selectOption(this,1,1)"><div class="opt-check"></div><div class="opt-text">一部は文書化されているが不完全</div></div>
+          <div class="option" onclick="selectOption(this,1,2)"><div class="opt-check"></div><div class="opt-text">担当者の頭の中にはあるが文書化されていない</div></div>
+          <div class="option" onclick="selectOption(this,1,3)"><div class="opt-check"></div><div class="opt-text">特に定義されていない</div></div>
+        </div>
+        <div class="nav"><button class="btn-back" onclick="goBack()">← 戻る</button><button class="btn-next" id="btn-next-1" onclick="goNext()">次へ →</button></div>
       </div>
+
+      <div class="question-block" id="q2">
+        <div class="q-tag">Question 02 / 10</div>
+        <div class="q-text">評価制度はどのような状態ですか？</div>
+        <div class="options" data-q="2">
+          <div class="option" onclick="selectOption(this,2,0)"><div class="opt-check"></div><div class="opt-text">評価基準が明確で、社員も理解している</div></div>
+          <div class="option" onclick="selectOption(this,2,1)"><div class="opt-check"></div><div class="opt-text">制度はあるが、運用が形骸化している</div></div>
+          <div class="option" onclick="selectOption(this,2,2)"><div class="opt-check"></div><div class="opt-text">評価はしているが、基準が曖昧</div></div>
+          <div class="option" onclick="selectOption(this,2,3)"><div class="opt-check"></div><div class="opt-text">評価制度がない、または機能していない</div></div>
+        </div>
+        <div class="nav"><button class="btn-back" onclick="goBack()">← 戻る</button><button class="btn-next" id="btn-next-2" onclick="goNext()">次へ →</button></div>
+      </div>
+
+      <div class="question-block" id="q3">
+        <div class="q-tag">Question 03 / 10</div>
+        <div class="q-text">賃金体系は社員に説明できる状態ですか？</div>
+        <div class="q-hint">「なぜこの給与なのか」を本人に説明できるか</div>
+        <div class="options" data-q="3">
+          <div class="option" onclick="selectOption(this,3,0)"><div class="opt-check"></div><div class="opt-text">ルールが整備され、説明できる</div></div>
+          <div class="option" onclick="selectOption(this,3,1)"><div class="opt-check"></div><div class="opt-text">大枠は説明できるが、細部は曖昧</div></div>
+          <div class="option" onclick="selectOption(this,3,2)"><div class="opt-check"></div><div class="opt-text">年功や感覚的な要素が強く、説明が難しい</div></div>
+          <div class="option" onclick="selectOption(this,3,3)"><div class="opt-check"></div><div class="opt-text">説明できない状態</div></div>
+        </div>
+        <div class="nav"><button class="btn-back" onclick="goBack()">← 戻る</button><button class="btn-next" id="btn-next-3" onclick="goNext()">次へ →</button></div>
+      </div>
+
+      <div class="question-block" id="q4">
+        <div class="q-tag">Question 04 / 10</div>
+        <div class="q-text">過去1年以内に「給与への不満」が離職・採用辞退の原因になりましたか？</div>
+        <div class="options" data-q="4">
+          <div class="option" onclick="selectOption(this,4,0)"><div class="opt-check"></div><div class="opt-text">把握している限りない</div></div>
+          <div class="option" onclick="selectOption(this,4,1)"><div class="opt-check"></div><div class="opt-text">1〜2件あった</div></div>
+          <div class="option" onclick="selectOption(this,4,2)"><div class="opt-check"></div><div class="opt-text">複数件あった</div></div>
+          <div class="option" onclick="selectOption(this,4,3)"><div class="opt-check"></div><div class="opt-text">頻繁にある、または把握できていない</div></div>
+        </div>
+        <div class="nav"><button class="btn-back" onclick="goBack()">← 戻る</button><button class="btn-next" id="btn-next-4" onclick="goNext()">次へ →</button></div>
+      </div>
+
+      <div class="question-block" id="q5">
+        <div class="q-tag">Question 05 / 10</div>
+        <div class="q-text">採用後の定着率（入社1年以内の離職率）はどの程度ですか？</div>
+        <div class="options scale" data-q="5">
+          <div class="option" onclick="selectOption(this,5,0)"><div class="scale-letter">A</div><div class="scale-lbl">ほぼ0%</div></div>
+          <div class="option" onclick="selectOption(this,5,1)"><div class="scale-letter">B</div><div class="scale-lbl">〜10%</div></div>
+          <div class="option" onclick="selectOption(this,5,2)"><div class="scale-letter">C</div><div class="scale-lbl">10〜20%</div></div>
+          <div class="option" onclick="selectOption(this,5,3)"><div class="scale-letter">D</div><div class="scale-lbl">20〜30%</div></div>
+          <div class="option" onclick="selectOption(this,5,4)"><div class="scale-letter">E</div><div class="scale-lbl">30%以上</div></div>
+        </div>
+        <div class="nav"><button class="btn-back" onclick="goBack()">← 戻る</button><button class="btn-next" id="btn-next-5" onclick="goNext()">次へ →</button></div>
+      </div>
+
+      <div class="question-block" id="q6">
+        <div class="q-tag">Question 06 / 10</div>
+        <div class="q-text">管理職（リーダー・マネージャー）は育成されていますか？</div>
+        <div class="q-hint">昇格の基準・スキル定義・育成プログラムなど</div>
+        <div class="options" data-q="6">
+          <div class="option" onclick="selectOption(this,6,0)"><div class="opt-check"></div><div class="opt-text">基準が明確で、育成の仕組みがある</div></div>
+          <div class="option" onclick="selectOption(this,6,1)"><div class="opt-check"></div><div class="opt-text">OJT中心で対応している</div></div>
+          <div class="option" onclick="selectOption(this,6,2)"><div class="opt-check"></div><div class="opt-text">個人の資質に依存している</div></div>
+          <div class="option" onclick="selectOption(this,6,3)"><div class="opt-check"></div><div class="opt-text">ほとんど取り組めていない</div></div>
+        </div>
+        <div class="nav"><button class="btn-back" onclick="goBack()">← 戻る</button><button class="btn-next" id="btn-next-6" onclick="goNext()">次へ →</button></div>
+      </div>
+
+      <div class="question-block" id="q7">
+        <div class="q-tag">Question 07 / 10</div>
+        <div class="q-text">従業員のエンゲージメントを把握していますか？</div>
+        <div class="options" data-q="7">
+          <div class="option" onclick="selectOption(this,7,0)"><div class="opt-check"></div><div class="opt-text">定期的にサーベイ等で測定している</div></div>
+          <div class="option" onclick="selectOption(this,7,1)"><div class="opt-check"></div><div class="opt-text">面談などで定性的には把握している</div></div>
+          <div class="option" onclick="selectOption(this,7,2)"><div class="opt-check"></div><div class="opt-text">把握できていないが課題とは感じている</div></div>
+          <div class="option" onclick="selectOption(this,7,3)"><div class="opt-check"></div><div class="opt-text">ほとんど意識できていない</div></div>
+        </div>
+        <div class="nav"><button class="btn-back" onclick="goBack()">← 戻る</button><button class="btn-next" id="btn-next-7" onclick="goNext()">次へ →</button></div>
+      </div>
+
+      <div class="question-block" id="q8">
+        <div class="q-tag">Question 08 / 10</div>
+        <div class="q-text">採用活動の課題として当てはまるものはどれですか？</div>
+        <div class="options" data-q="8">
+          <div class="option" onclick="selectOption(this,8,0)"><div class="opt-check"></div><div class="opt-text">特に課題はなく、計画通り採用できている</div></div>
+          <div class="option" onclick="selectOption(this,8,1)"><div class="opt-check"></div><div class="opt-text">応募数が少ない</div></div>
+          <div class="option" onclick="selectOption(this,8,2)"><div class="opt-check"></div><div class="opt-text">内定承諾率が低い・辞退が多い</div></div>
+          <div class="option" onclick="selectOption(this,8,3)"><div class="opt-check"></div><div class="opt-text">採用後のミスマッチが多い</div></div>
+        </div>
+        <div class="nav"><button class="btn-back" onclick="goBack()">← 戻る</button><button class="btn-next" id="btn-next-8" onclick="goNext()">次へ →</button></div>
+      </div>
+
+      <div class="question-block" id="q9">
+        <div class="q-tag">Question 09 / 10</div>
+        <div class="q-text">人事に関する専任担当者はいますか？</div>
+        <div class="options" data-q="9">
+          <div class="option" onclick="selectOption(this,9,0)"><div class="opt-check"></div><div class="opt-text">専任の人事部門・担当者がいる</div></div>
+          <div class="option" onclick="selectOption(this,9,1)"><div class="opt-check"></div><div class="opt-text">総務や経理と兼任している</div></div>
+          <div class="option" onclick="selectOption(this,9,2)"><div class="opt-check"></div><div class="opt-text">経営者や役員が兼任している</div></div>
+          <div class="option" onclick="selectOption(this,9,3)"><div class="opt-check"></div><div class="opt-text">誰も担当できていない</div></div>
+        </div>
+        <div class="nav"><button class="btn-back" onclick="goBack()">← 戻る</button><button class="btn-next" id="btn-next-9" onclick="goNext()">次へ →</button></div>
+      </div>
+
+      <div class="question-block" id="q10">
+        <div class="q-tag">Question 10 / 10</div>
+        <div class="q-text">今後1年以内に解決したい最優先の人事課題は？</div>
+        <div class="options" data-q="10">
+          <div class="option" onclick="selectOption(this,10,0)"><div class="opt-check"></div><div class="opt-text">等級・評価制度の整備</div></div>
+          <div class="option" onclick="selectOption(this,10,1)"><div class="opt-check"></div><div class="opt-text">賃金体系の見直し</div></div>
+          <div class="option" onclick="selectOption(this,10,2)"><div class="opt-check"></div><div class="opt-text">採用力の強化・定着率改善</div></div>
+          <div class="option" onclick="selectOption(this,10,3)"><div class="opt-check"></div><div class="opt-text">管理職育成・組織開発</div></div>
+        </div>
+        <div class="nav"><button class="btn-back" onclick="goBack()">← 戻る</button><button class="btn-next" id="btn-next-10" onclick="showResult()">結果を見る →</button></div>
+      </div>
+
     </div>
+  </div>
 
-    <!-- Questions 1-10 -->
-    <div class="question-block" id="q1">
-      <div class="q-number">Question 01 / 10</div>
-      <div class="q-text">現在、等級・職位の定義が明文化されていますか？</div>
-      <div class="q-sub">「なんとなく役職がある」状態は含みません</div>
-      <div class="options" data-q="1">
-        <div class="option" onclick="selectOption(this,1,0)"><div class="option-marker"></div><div class="option-text">明文化され、全社員に周知されている</div></div>
-        <div class="option" onclick="selectOption(this,1,1)"><div class="option-marker"></div><div class="option-text">一部は文書化されているが不完全</div></div>
-        <div class="option" onclick="selectOption(this,1,2)"><div class="option-marker"></div><div class="option-text">担当者の頭の中にはあるが文書化されていない</div></div>
-        <div class="option" onclick="selectOption(this,1,3)"><div class="option-marker"></div><div class="option-text">特に定義されていない</div></div>
-      </div>
-      <div class="nav">
-        <button class="btn-back" onclick="goBack()">← 戻る</button>
-        <button class="btn-next" id="btn-next-1" onclick="goNext()">次へ →</button>
-      </div>
-    </div>
-
-    <div class="question-block" id="q2">
-      <div class="q-number">Question 02 / 10</div>
-      <div class="q-text">評価制度はどのような状態ですか？</div>
-      <div class="options" data-q="2">
-        <div class="option" onclick="selectOption(this,2,0)"><div class="option-marker"></div><div class="option-text">評価基準が明確で、社員も理解している</div></div>
-        <div class="option" onclick="selectOption(this,2,1)"><div class="option-marker"></div><div class="option-text">制度はあるが、運用が形骸化している</div></div>
-        <div class="option" onclick="selectOption(this,2,2)"><div class="option-marker"></div><div class="option-text">評価はしているが、基準が曖昧</div></div>
-        <div class="option" onclick="selectOption(this,2,3)"><div class="option-marker"></div><div class="option-text">評価制度がない、または機能していない</div></div>
-      </div>
-      <div class="nav">
-        <button class="btn-back" onclick="goBack()">← 戻る</button>
-        <button class="btn-next" id="btn-next-2" onclick="goNext()">次へ →</button>
-      </div>
-    </div>
-
-    <div class="question-block" id="q3">
-      <div class="q-number">Question 03 / 10</div>
-      <div class="q-text">賃金体系は社員に対して説明できる状態ですか？</div>
-      <div class="q-sub">「なぜこの給与なのか」を本人に説明できるか</div>
-      <div class="options" data-q="3">
-        <div class="option" onclick="selectOption(this,3,0)"><div class="option-marker"></div><div class="option-text">ルールが整備され、説明できる</div></div>
-        <div class="option" onclick="selectOption(this,3,1)"><div class="option-marker"></div><div class="option-text">大枠は説明できるが、細部は曖昧</div></div>
-        <div class="option" onclick="selectOption(this,3,2)"><div class="option-marker"></div><div class="option-text">年功や感覚的な要素が強く、説明が難しい</div></div>
-        <div class="option" onclick="selectOption(this,3,3)"><div class="option-marker"></div><div class="option-text">説明できない状態</div></div>
-      </div>
-      <div class="nav">
-        <button class="btn-back" onclick="goBack()">← 戻る</button>
-        <button class="btn-next" id="btn-next-3" onclick="goNext()">次へ →</button>
-      </div>
-    </div>
-
-    <div class="question-block" id="q4">
-      <div class="q-number">Question 04 / 10</div>
-      <div class="q-text">過去1年以内に「給与への不満」が離職や採用辞退の原因になりましたか？</div>
-      <div class="options" data-q="4">
-        <div class="option" onclick="selectOption(this,4,0)"><div class="option-marker"></div><div class="option-text">把握している限りない</div></div>
-        <div class="option" onclick="selectOption(this,4,1)"><div class="option-marker"></div><div class="option-text">1〜2件あった</div></div>
-        <div class="option" onclick="selectOption(this,4,2)"><div class="option-marker"></div><div class="option-text">複数件あった</div></div>
-        <div class="option" onclick="selectOption(this,4,3)"><div class="option-marker"></div><div class="option-text">頻繁にある、または把握できていない</div></div>
-      </div>
-      <div class="nav">
-        <button class="btn-back" onclick="goBack()">← 戻る</button>
-        <button class="btn-next" id="btn-next-4" onclick="goNext()">次へ →</button>
-      </div>
-    </div>
-
-    <div class="question-block" id="q5">
-      <div class="q-number">Question 05 / 10</div>
-      <div class="q-text">採用後の定着率（入社1年以内の離職率）はどの程度ですか？</div>
-      <div class="options scale" data-q="5">
-        <div class="option" onclick="selectOption(this,5,0)"><div class="scale-num">A</div><div class="scale-label">ほぼ0%</div></div>
-        <div class="option" onclick="selectOption(this,5,1)"><div class="scale-num">B</div><div class="scale-label">〜10%</div></div>
-        <div class="option" onclick="selectOption(this,5,2)"><div class="scale-num">C</div><div class="scale-label">10〜20%</div></div>
-        <div class="option" onclick="selectOption(this,5,3)"><div class="scale-num">D</div><div class="scale-label">20〜30%</div></div>
-        <div class="option" onclick="selectOption(this,5,4)"><div class="scale-num">E</div><div class="scale-label">30%以上</div></div>
-      </div>
-      <div class="nav">
-        <button class="btn-back" onclick="goBack()">← 戻る</button>
-        <button class="btn-next" id="btn-next-5" onclick="goNext()">次へ →</button>
-      </div>
-    </div>
-
-    <div class="question-block" id="q6">
-      <div class="q-number">Question 06 / 10</div>
-      <div class="q-text">管理職（リーダー・マネージャー）は育成されていますか？</div>
-      <div class="q-sub">昇格の基準・スキル定義・育成プログラムなど</div>
-      <div class="options" data-q="6">
-        <div class="option" onclick="selectOption(this,6,0)"><div class="option-marker"></div><div class="option-text">基準が明確で、育成の仕組みがある</div></div>
-        <div class="option" onclick="selectOption(this,6,1)"><div class="option-marker"></div><div class="option-text">OJT中心で対応している</div></div>
-        <div class="option" onclick="selectOption(this,6,2)"><div class="option-marker"></div><div class="option-text">個人の資質に依存している</div></div>
-        <div class="option" onclick="selectOption(this,6,3)"><div class="option-marker"></div><div class="option-text">ほとんど取り組めていない</div></div>
-      </div>
-      <div class="nav">
-        <button class="btn-back" onclick="goBack()">← 戻る</button>
-        <button class="btn-next" id="btn-next-6" onclick="goNext()">次へ →</button>
-      </div>
-    </div>
-
-    <div class="question-block" id="q7">
-      <div class="q-number">Question 07 / 10</div>
-      <div class="q-text">エンゲージメント（従業員の会社への関与度）を把握していますか？</div>
-      <div class="options" data-q="7">
-        <div class="option" onclick="selectOption(this,7,0)"><div class="option-marker"></div><div class="option-text">定期的にサーベイ等で測定している</div></div>
-        <div class="option" onclick="selectOption(this,7,1)"><div class="option-marker"></div><div class="option-text">面談などで定性的には把握している</div></div>
-        <div class="option" onclick="selectOption(this,7,2)"><div class="option-marker"></div><div class="option-text">把握できていないが課題とは感じている</div></div>
-        <div class="option" onclick="selectOption(this,7,3)"><div class="option-marker"></div><div class="option-text">ほとんど意識できていない</div></div>
-      </div>
-      <div class="nav">
-        <button class="btn-back" onclick="goBack()">← 戻る</button>
-        <button class="btn-next" id="btn-next-7" onclick="goNext()">次へ →</button>
-      </div>
-    </div>
-
-    <div class="question-block" id="q8">
-      <div class="q-number">Question 08 / 10</div>
-      <div class="q-text">採用活動の課題として当てはまるものはどれですか？</div>
-      <div class="options" data-q="8">
-        <div class="option" onclick="selectOption(this,8,0)"><div class="option-marker"></div><div class="option-text">特に課題はなく、計画通り採用できている</div></div>
-        <div class="option" onclick="selectOption(this,8,1)"><div class="option-marker"></div><div class="option-text">応募数が少ない</div></div>
-        <div class="option" onclick="selectOption(this,8,2)"><div class="option-marker"></div><div class="option-text">内定承諾率が低い・辞退が多い</div></div>
-        <div class="option" onclick="selectOption(this,8,3)"><div class="option-marker"></div><div class="option-text">採用後のミスマッチが多い</div></div>
-      </div>
-      <div class="nav">
-        <button class="btn-back" onclick="goBack()">← 戻る</button>
-        <button class="btn-next" id="btn-next-8" onclick="goNext()">次へ →</button>
-      </div>
-    </div>
-
-    <div class="question-block" id="q9">
-      <div class="q-number">Question 09 / 10</div>
-      <div class="q-text">人事に関する専任担当者はいますか？</div>
-      <div class="options" data-q="9">
-        <div class="option" onclick="selectOption(this,9,0)"><div class="option-marker"></div><div class="option-text">専任の人事部門・担当者がいる</div></div>
-        <div class="option" onclick="selectOption(this,9,1)"><div class="option-marker"></div><div class="option-text">総務や経理と兼任している</div></div>
-        <div class="option" onclick="selectOption(this,9,2)"><div class="option-marker"></div><div class="option-text">経営者や役員が兼任している</div></div>
-        <div class="option" onclick="selectOption(this,9,3)"><div class="option-marker"></div><div class="option-text">誰も担当できていない</div></div>
-      </div>
-      <div class="nav">
-        <button class="btn-back" onclick="goBack()">← 戻る</button>
-        <button class="btn-next" id="btn-next-9" onclick="goNext()">次へ →</button>
-      </div>
-    </div>
-
-    <div class="question-block" id="q10">
-      <div class="q-number">Question 10 / 10</div>
-      <div class="q-text">今後1年以内に人事領域で解決したい最優先課題は？</div>
-      <div class="options" data-q="10">
-        <div class="option" onclick="selectOption(this,10,0)"><div class="option-marker"></div><div class="option-text">等級・評価制度の整備</div></div>
-        <div class="option" onclick="selectOption(this,10,1)"><div class="option-marker"></div><div class="option-text">賃金体系の見直し</div></div>
-        <div class="option" onclick="selectOption(this,10,2)"><div class="option-marker"></div><div class="option-text">採用力の強化・定着率改善</div></div>
-        <div class="option" onclick="selectOption(this,10,3)"><div class="option-marker"></div><div class="option-text">管理職育成・組織開発</div></div>
-      </div>
-      <div class="nav">
-        <button class="btn-back" onclick="goBack()">← 戻る</button>
-        <button class="btn-next" id="btn-next-10" onclick="showResult()">結果を見る →</button>
-      </div>
-    </div>
-
-  </div><!-- /form-section -->
-
-  <!-- Result section -->
   <div id="result-section">
-    <div class="result-header">
-      <div class="result-badge">Diagnosis Result</div>
-      <div class="result-title">
-        <span class="result-company" id="res-company">〇〇株式会社</span>の<br>
-        人事制度 診断レポート
-      </div>
+    <div class="result-hero">
+      <div class="result-company-label">診断対象企業</div>
+      <div class="result-company-name" id="res-company">〇〇株式会社</div>
+      <div class="result-subtitle">人事制度 診断レポート</div>
     </div>
 
-    <div class="score-visual" id="score-visual"></div>
+    <div class="section-card">
+      <div class="section-heading">5軸スコア</div>
+      <div id="score-visual"></div>
+    </div>
 
-    <div class="issues-section">
-      <div class="section-title">優先度の高い課題</div>
+    <div class="section-card">
+      <div class="section-heading">優先度の高い課題</div>
       <div id="issue-cards"></div>
     </div>
 
-    <div class="cta-block">
-      <div class="cta-label">Next Step</div>
-      <div class="cta-title">無料相談で、解決策を一緒に考えます</div>
-      <div class="cta-desc">
-        診断結果をもとに、NakamAction_LABOの専門コンサルタントが<br>
-        貴社に合った人事制度改善のロードマップをご提案します。<br>
-        初回60分・完全無料・オンライン対応
+    <div class="cta-card">
+      <div class="cta-eyebrow">Next Step</div>
+      <div class="cta-title">診断結果をもとに、<br>専門家が解決策をご提案します</div>
+      <div class="cta-desc">初回60分・完全無料・オンライン対応<br>NakamAction_LABOのコンサルタントが<br>貴社に合った人事制度改善のロードマップをご提案します</div>
+      <button class="cta-btn" onclick="window.open('https://reserva.be/nakamacion', '_blank')">無料相談を予約する →</button>
+
+      <div class="trust-row">
+        <div class="trust-item">完全無料</div>
+        <div class="trust-item">秘密厳守</div>
+        <div class="trust-item">オンライン対応</div>
       </div>
-      <button class="cta-btn" onclick="alert('お問い合わせページへ遷移します（実装時にURLを設定してください）')">
-        無料相談を予約する
-      </button>
-      <div class="cta-note">※ 強引な営業は一切行いません</div>
     </div>
 
-    <div style="text-align:center;margin-top:32px">
+    <div style="text-align:center;margin-top:24px">
       <button class="btn-back" onclick="resetDiagnosis()">← 最初からやり直す</button>
     </div>
   </div>
 
-  <footer class="footer">
-    <span>NakamAction_LABO</span> © 2025 · 狛江市 · 人事コンサルティング
-  </footer>
-
-</div><!-- /container -->
+  <footer class="footer">NakamAction_LABO © 2025 · 狛江市 · 人事コンサルティング</footer>
+</div>
 
 <script>
   let current = 0;
@@ -871,20 +929,14 @@
   const answers = {};
 
   function checkInfo() {
-    const name = document.getElementById('company-name').value.trim();
-    const size = document.getElementById('company-size').value;
-    const ind  = document.getElementById('company-industry').value;
-    const btn  = document.getElementById('btn-next-0');
-    if (name && size && ind) {
-      btn.classList.add('ready');
-    } else {
-      btn.classList.remove('ready');
-    }
+    const ok = document.getElementById('company-name').value.trim() &&
+               document.getElementById('company-size').value &&
+               document.getElementById('company-industry').value;
+    document.getElementById('btn-next-0').classList.toggle('ready', !!ok);
   }
 
   function selectOption(el, qNum, val) {
-    const opts = el.closest('.options').querySelectorAll('.option');
-    opts.forEach(o => o.classList.remove('selected'));
+    el.closest('.options').querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
     el.classList.add('selected');
     answers[qNum] = val;
     const btn = document.getElementById('btn-next-' + qNum);
@@ -892,139 +944,77 @@
   }
 
   function goNext() {
-    const curr = document.getElementById('q' + current);
-    curr.classList.remove('active');
+    document.getElementById('q' + current).classList.remove('active');
     current++;
-    const next = document.getElementById('q' + current);
-    if (next) {
-      next.classList.add('active');
-      updateProgress();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    document.getElementById('q' + current).classList.add('active');
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function goBack() {
-    if (current === 0) return;
-    const curr = document.getElementById('q' + current);
-    curr.classList.remove('active');
+    if (!current) return;
+    document.getElementById('q' + current).classList.remove('active');
     current--;
-    const prev = document.getElementById('q' + current);
-    if (prev) {
-      prev.classList.add('active');
-      updateProgress();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    document.getElementById('q' + current).classList.add('active');
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function updateProgress() {
     const pct = Math.round((current / total) * 100);
     document.getElementById('progress-fill').style.width = pct + '%';
-    document.getElementById('progress-text').textContent =
-      current === 0 ? '0 / ' + total : (current) + ' / ' + total;
+    document.getElementById('progress-text').textContent = (current || '0') + ' / ' + total;
   }
 
   function calcScores() {
-    // Scores for each dimension (0=best, 3=worst per question)
-    // Grading: score / max * 100, then invert for "health" %
-    const dims = {
-      '等級・評価制度': [answers[1], answers[2]],
-      '賃金体系':       [answers[3], answers[4]],
-      '採用・定着':     [answers[5], answers[8]],
-      '人材育成':       [answers[6], answers[9]],
-      '組織・エンゲージメント': [answers[7], answers[10] !== undefined ? 1 : 1],
-    };
+    const a = answers;
+    const dims = { '等級・評価制度': [a[1],a[2]], '賃金体系': [a[3],a[4]], '採用・定着': [a[5],a[8]], '人材育成': [a[6],a[9]], 'エンゲージメント': [a[7],1] };
     const result = {};
-    for (const [dim, vals] of Object.entries(dims)) {
-      const maxPossible = vals.length * 3;
-      const raw = vals.reduce((a, b) => a + (b || 0), 0);
-      result[dim] = Math.max(10, Math.round((1 - raw / maxPossible) * 100));
+    for (const [d, vals] of Object.entries(dims)) {
+      result[d] = Math.max(10, Math.round((1 - vals.reduce((s,v)=>s+(v||0),0) / (vals.length*3)) * 100));
     }
     return result;
   }
 
   function getIssues() {
-    const issues = [];
     const a = answers;
-
-    if (a[1] >= 2 || a[2] >= 2) {
-      issues.push({
-        title: '等級・評価制度の未整備',
-        desc: '評価基準が曖昧なままでは、社員のモチベーション低下や「頑張っても報われない」感覚につながります。まず等級定義と評価軸の言語化から着手することをお勧めします。'
-      });
-    }
-    if (a[3] >= 2 || a[4] >= 1) {
-      issues.push({
-        title: '賃金への不満・納得感の低下',
-        desc: '「なぜこの給与なのか」を説明できない状態は、優秀人材の離職リスクを高めます。ジョブグレードと連動した賃金テーブルの整備が急務です。'
-      });
-    }
-    if (a[5] >= 2 || a[8] >= 1) {
-      issues.push({
-        title: '採用・定着の課題',
-        desc: '入社後の早期離職は採用コストの無駄だけでなく、現場負荷も上げます。オンボーディング設計と入社後フォローの仕組み化が効果的です。'
-      });
-    }
-    if (a[6] >= 2) {
-      issues.push({
-        title: '管理職の育成不足',
-        desc: 'マネジメント力は組織の成長速度を左右します。昇格基準の明文化とマネジメントスキルの習得支援が、組織全体のパフォーマンス向上につながります。'
-      });
-    }
-
-    if (issues.length === 0) {
-      issues.push({
-        title: '人事制度の継続的な改善',
-        desc: '現状は比較的整備されています。次のステップとして、データ活用による定量的な制度評価と、さらなる従業員体験の向上に取り組むことをお勧めします。'
-      });
-    }
-    return issues.slice(0, 3);
+    const issues = [];
+    if (a[1]>=2||a[2]>=2) issues.push({icon:'📋',title:'等級・評価制度の未整備',desc:'評価基準が曖昧なままでは社員のモチベーション低下につながります。等級定義と評価軸の言語化から着手することをお勧めします。'});
+    if (a[3]>=2||a[4]>=1) issues.push({icon:'💴',title:'賃金への納得感の低下',desc:'「なぜこの給与か」を説明できない状態は優秀人材の離職リスクを高めます。ジョブグレードと連動した賃金テーブルの整備が急務です。'});
+    if (a[5]>=2||a[8]>=1) issues.push({icon:'🤝',title:'採用・定着の課題',desc:'入社後の早期離職は採用コストの無駄だけでなく現場負荷も上げます。オンボーディング設計と入社後フォローの仕組み化が効果的です。'});
+    if (a[6]>=2) issues.push({icon:'📈',title:'管理職育成の不足',desc:'昇格基準の明文化とマネジメントスキルの習得支援が組織全体のパフォーマンス向上につながります。'});
+    if (!issues.length) issues.push({icon:'✅',title:'継続的な制度改善',desc:'現状は比較的整備されています。データ活用による定量評価と従業員体験のさらなる向上に取り組むことをお勧めします。'});
+    return issues.slice(0,3);
   }
 
   function showResult() {
-    // Hide form
     document.getElementById('form-section').style.display = 'none';
-    const res = document.getElementById('result-section');
-    res.style.display = 'block';
+    document.getElementById('result-section').style.display = 'block';
+    document.getElementById('res-company').textContent = document.getElementById('company-name').value || '貴社';
 
-    // Company name
-    const cn = document.getElementById('company-name').value || '貴社';
-    document.getElementById('res-company').textContent = cn;
-
-    // Scores
     const scores = calcScores();
     const sv = document.getElementById('score-visual');
     sv.innerHTML = '';
     setTimeout(() => {
       for (const [dim, pct] of Object.entries(scores)) {
-        const cls = pct >= 70 ? 'low' : pct >= 40 ? 'mid' : 'high';
+        const cls = pct>=70?'good':pct>=40?'warn':'risk';
         const row = document.createElement('div');
-        row.className = 'score-item';
-        row.innerHTML = `
-          <span class="score-label">${dim}</span>
-          <div class="score-track"><div class="score-bar ${cls}" style="width:0%" data-target="${pct}"></div></div>
-          <span class="score-val">${pct}<span style="font-size:12px;opacity:0.6">%</span></span>
-        `;
+        row.className = 'score-row';
+        row.innerHTML = `<span class="score-dim">${dim}</span><div class="score-track"><div class="score-bar ${cls}" data-target="${pct}"></div></div><span class="score-pct ${cls}">${pct}%</span>`;
         sv.appendChild(row);
       }
-      // Animate bars
-      requestAnimationFrame(() => {
-        document.querySelectorAll('.score-bar').forEach(bar => {
-          bar.style.width = bar.dataset.target + '%';
-        });
-      });
+      requestAnimationFrame(() => document.querySelectorAll('.score-bar').forEach(b => b.style.width = b.dataset.target+'%'));
     }, 100);
 
-    // Issues
     const ic = document.getElementById('issue-cards');
     ic.innerHTML = '';
     getIssues().forEach(issue => {
-      const card = document.createElement('div');
-      card.className = 'issue-card';
-      card.innerHTML = `<div class="issue-title">${issue.title}</div><div class="issue-desc">${issue.desc}</div>`;
-      ic.appendChild(card);
+      const el = document.createElement('div');
+      el.className = 'issue-item';
+      el.innerHTML = `<div class="issue-icon">${issue.icon}</div><div class="issue-body"><div class="issue-title">${issue.title}</div><div class="issue-desc">${issue.desc}</div></div>`;
+      ic.appendChild(el);
     });
 
-    // Progress to 100%
     document.getElementById('progress-fill').style.width = '100%';
     document.getElementById('progress-text').textContent = '10 / 10';
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1037,9 +1027,8 @@
     document.getElementById('form-section').style.display = 'block';
     document.querySelectorAll('.question-block').forEach(b => b.classList.remove('active'));
     document.getElementById('q0').classList.add('active');
-    document.getElementById('company-name').value = '';
-    document.getElementById('company-size').value = '';
-    document.getElementById('company-industry').value = '';
+    ['company-name'].forEach(id => document.getElementById(id).value='');
+    ['company-size','company-industry'].forEach(id => document.getElementById(id).value='');
     document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
     document.querySelectorAll('.btn-next').forEach(b => b.classList.remove('ready'));
     updateProgress();
